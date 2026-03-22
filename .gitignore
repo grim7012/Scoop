@@ -1,0 +1,14 @@
+node_modules
+.next
+.env
+*.mp4
+*.mov
+*.zip
+*.gif
+.env.local
+.env.development.local
+.env.test.local 
+node_modules/
+.next/
+.env
+.env.local
