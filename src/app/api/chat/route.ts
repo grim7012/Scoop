@@ -278,7 +278,7 @@ export async function POST(req: NextRequest) {
     const text = result.response.text();
 
     if (!text || text.trim().length === 0) {
-      throw new Error("Empty response from Gemini");
+      throw new Error("Searching for the perfect flavor for you.");
     }
 
     // Validate the response format
@@ -319,16 +319,16 @@ export async function POST(req: NextRequest) {
       status: e.status
     });
 
-    let msg = "Something went wrong, try again in a moment.";
+    let msg = "The chiller is not cooling, try again in a moment.";
     
     if (e.message?.includes("API_KEY") || e.message?.includes("API key")) {
       msg = "Invalid API key — check GEMINI_API_KEY in .env.local";
     } else if (e.message?.includes("not found") || e.status === 404) {
-      msg = "Model not found. Using gemini-1.5-flash.";
+      msg = "Ice cream model is outdated.";
     } else if (e.status === 429) {
-      msg = "Rate limit hit — wait a moment and try again.";
+      msg = "Too many flavors in the chiller right no, please try again in a moment.";
     } else if (e.message?.includes("empty") || e.message?.includes("response")) {
-      msg = "No response from AI. Please try again.";
+      msg = "Nothing in the cellar please try again.";
     }
 
     return NextResponse.json({ error: msg }, { status: 500 });
