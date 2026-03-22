@@ -131,17 +131,15 @@ export default function ChatPage() {
 
   /* ── Bootstrap ─────────────────────────────────────────────── */
   useEffect(() => {
+    // Always start a fresh chat on page load — history is still accessible via the panel
     try {
       const s = localStorage.getItem("scoop-cellar");
       if (s) setCellar(JSON.parse(s));
     } catch {}
     const stored = loadSessions();
     setSessions(stored);
-    const lastId = loadActiveSessionId();
-    if (lastId) {
-      const last = stored.find(s => s.id === lastId);
-      if (last?.messages.length) { setMessages(last.messages); setActiveId(lastId); }
-    }
+    // Clear the active session pointer so we never restore a previous conversation
+    saveActiveSessionId(null);
   }, []);
 
   /* ── Auto-save ──────────────────────────────────────────────── */
