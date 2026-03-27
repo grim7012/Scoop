@@ -239,7 +239,7 @@ export default function CellarDrawer({ cellar, onClose, onRemove, onAsk }: Props
                     boxShadow: `0 2px 8px ${f.hex_color}33`,
                   }}
                 >
-                  {f.image_emoji}
+                  {f.image_url}
                 </div>
 
                 {/* Content */}
