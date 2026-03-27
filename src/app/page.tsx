@@ -33,9 +33,9 @@ const FEATURES = [
 ];
 
 const PHILOSOPHY_IMAGES = [
-  "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=80&h=80&fit=crop",
-  "https://images.unsplash.com/photo-1542838132-92c53300491e?w=80&h=80&fit=crop",
-  "https://images.unsplash.com/photo-1514517521153-1be72277b32f?w=80&h=80&fit=crop"
+  "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=600",
+  "https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=600",
+  "https://images.unsplash.com/photo-1514517521153-1be72277b32f?w=400&h=600"
 ];
 
 const SHOWCASE_FLAVORS = ["v7-lavender-honeycomb", "v24-pistachio-rose", "v40-raspberry-rose-champagne", "v8-ube-coconut", "v11-mango-chili-lime"];
@@ -375,136 +375,141 @@ export default function PremiumLanding() {
 
         </div>
 
-        {/* Flavor Preview Row */}
-        <div className="max-w-6xl mx-auto mt-8 sm:mt-10 px-4 sm:px-0">
-          <div className="flex gap-2 sm:gap-3 justify-center flex-wrap">
-            {showcase.map((flavor, i) => (
-              <motion.div
-                key={flavor.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + i * 0.08 }}
-                onMouseEnter={() => setHoveredFlavor(flavor.id)}
-                onMouseLeave={() => setHoveredFlavor(null)}
-                className="relative cursor-pointer"
-              >
-                <div 
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full premium-glass flex items-center gap-2 transition-all"
-                  style={{ borderColor: hoveredFlavor === flavor.id ? '#F7E7CE' : 'rgba(255,255,255,0.06)' }}
-                >
-                  <div 
-                    className="w-5 h-5 sm:w-6 sm:h-6 rounded-full"
-                    style={{ background: flavor.hex_color }}
-                  />
-                  <span className="text-[10px] sm:text-xs font-light">{flavor.flavor_name}</span>
-                  <span className="text-[7px] sm:text-[8px] text-white/40">{flavor.mood_tag}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
 
       {/* ── PHILOSOPHY SECTION ─────────────────────────────────────────── */}
-      <section id="philosophy" className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12">
-            <motion.p 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="text-[#F7E7CE] text-[9px] sm:text-[10px] tracking-[0.4em] uppercase mb-3"
-            >
-              Our Philosophy
-            </motion.p>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="serif-swirl text-3xl sm:text-4xl md:text-5xl font-light text-white"
-            >
-              Taste with intention,
-              <br />
-              <span className="gold-gradient">savor with presence</span>
-            </motion.h2>
-          </div>
+<section id="philosophy" className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent">
+  <div className="max-w-6xl mx-auto">
+    
+    {/* Heading */}
+    <div className="text-center mb-10 sm:mb-14">
+      <motion.p 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        className="text-[#F7E7CE] text-[9px] sm:text-[10px] tracking-[0.4em] uppercase mb-3"
+      >
+        Our Philosophy
+      </motion.p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
-            {/* Philosophy Card 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              whileHover={{ y: -4 }}
-              className="premium-glass rounded-2xl p-5 sm:p-6 text-center"
-            >
-              <img 
-                src={PHILOSOPHY_IMAGES[0]} 
-                alt="Intentional Curation"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover mx-auto mb-4"
-              />
-              <h3 className="serif-swirl text-base sm:text-lg text-white mb-2">Intentional Curation</h3>
-              <p className="text-white/40 text-xs leading-relaxed">
-                Every flavor tells a story. We source ingredients that honor tradition while embracing innovation.
-              </p>
-            </motion.div>
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        className="serif-swirl text-3xl sm:text-4xl md:text-5xl font-light text-white"
+      >
+        Taste with intention,
+        <br />
+        <span className="gold-gradient">savor with presence</span>
+      </motion.h2>
+    </div>
 
-            {/* Philosophy Card 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              whileHover={{ y: -4 }}
-              className="premium-glass rounded-2xl p-5 sm:p-6 text-center"
-            >
-              <img 
-                src={PHILOSOPHY_IMAGES[1]} 
-                alt="Conscious Creation"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover mx-auto mb-4"
-              />
-              <h3 className="serif-swirl text-base sm:text-lg text-white mb-2">Conscious Creation</h3>
-              <p className="text-white/40 text-xs leading-relaxed">
-                Respect for ingredients, respect for dietary needs, respect for the moment you choose to indulge.
-              </p>
-            </motion.div>
-
-            {/* Philosophy Card 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              whileHover={{ y: -4 }}
-              className="premium-glass rounded-2xl p-5 sm:p-6 text-center"
-            >
-              <img 
-                src={PHILOSOPHY_IMAGES[2]} 
-                alt="Sensory Storytelling"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover mx-auto mb-4"
-              />
-              <h3 className="serif-swirl text-base sm:text-lg text-white mb-2">Sensory Storytelling</h3>
-              <p className="text-white/40 text-xs leading-relaxed">
-                Beyond taste—texture, temperature, and memory. We guide you to flavors that resonate.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Philosophy Quote */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mt-8 sm:mt-10 text-center"
-          >
-            <div className="inline-block premium-glass rounded-2xl p-5 sm:p-6 max-w-2xl">
-              <span className="text-[#F7E7CE] text-2xl sm:text-3xl block mb-3">“</span>
-              <p className="serif-swirl text-sm sm:text-base italic text-white/70 leading-relaxed">
-                We believe the best dessert isn't just eaten—it's experienced. A moment of connection, 
-                a story worth savoring, a finish that lingers in memory.
-              </p>
-              <p className="text-white/30 text-[9px] sm:text-[10px] mt-4 tracking-wider">— The Scoop Philosophy</p>
-            </div>
-          </motion.div>
+    {/* Cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6">
+      
+      {/* Card 1 */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        whileHover={{ y: -6 }}
+        className="premium-glass rounded-2xl overflow-hidden group"
+      >
+        <div className="overflow-hidden">
+          <img 
+            src={PHILOSOPHY_IMAGES[0]} 
+            alt="Intentional Curation"
+            className="w-full h-44 sm:h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+          />
         </div>
-      </section>
 
+        <div className="p-5 sm:p-6 text-center">
+          <h3 className="serif-swirl text-base sm:text-lg text-white mb-2">
+            Intentional Curation
+          </h3>
+          <p className="text-white/40 text-xs leading-relaxed">
+            Every flavor tells a story. We source ingredients that honor tradition while embracing innovation.
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Card 2 */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        whileHover={{ y: -6 }}
+        className="premium-glass rounded-2xl overflow-hidden group"
+      >
+        <div className="overflow-hidden">
+          <img 
+            src={PHILOSOPHY_IMAGES[1]} 
+            alt="Conscious Creation"
+            className="w-full h-44 sm:h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+
+        <div className="p-5 sm:p-6 text-center">
+          <h3 className="serif-swirl text-base sm:text-lg text-white mb-2">
+            Conscious Creation
+          </h3>
+          <p className="text-white/40 text-xs leading-relaxed">
+            Respect for ingredients, respect for dietary needs, respect for the moment you choose to indulge.
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Card 3 */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        whileHover={{ y: -6 }}
+        className="premium-glass rounded-2xl overflow-hidden group"
+      >
+        <div className="overflow-hidden">
+          <img 
+            src={PHILOSOPHY_IMAGES[2]} 
+            alt="Sensory Storytelling"
+            className="w-full h-44 sm:h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+
+        <div className="p-5 sm:p-6 text-center">
+          <h3 className="serif-swirl text-base sm:text-lg text-white mb-2">
+            Sensory Storytelling
+          </h3>
+          <p className="text-white/40 text-xs leading-relaxed">
+            Beyond taste—texture, temperature, and memory. We guide you to flavors that resonate.
+          </p>
+        </div>
+      </motion.div>
+
+    </div>
+
+    {/* Quote */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4 }}
+      className="mt-10 sm:mt-14 text-center"
+    >
+      <div className="inline-block premium-glass rounded-2xl p-6 sm:p-8 max-w-2xl">
+        <span className="text-[#F7E7CE] text-5xl sm:text-7xl md:text-8xl font-serif leading-none">
+          “
+        </span>
+
+        <p className="serif-swirl text-sm sm:text-base italic text-white/70 leading-relaxed">
+          We believe the best dessert isn't just eaten—it's experienced. A moment of connection, 
+          a story worth savoring, a finish that lingers in memory.
+        </p>
+
+        <p className="text-white/30 text-[9px] sm:text-[10px] mt-4 tracking-wider">
+          — The Scoop Philosophy
+        </p>
+      </div>
+    </motion.div>
+
+  </div>
+</section>
       {/* ── FEATURES SECTION ─────────────────────────────────────────── */}
       <section id="features" className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
@@ -562,7 +567,7 @@ export default function PremiumLanding() {
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
-            {flavors.slice(0, 8).map((flavor, i) => (
+            {flavors.slice(13, 24).map((flavor, i) => (
               <motion.div
                 key={flavor.id}
                 initial={{ opacity: 0, scale: 0.96 }}
@@ -575,7 +580,7 @@ export default function PremiumLanding() {
                   className="h-20 sm:h-24 flex items-center justify-center text-3xl sm:text-4xl transition-transform group-hover:scale-110 duration-500"
                   style={{ background: `linear-gradient(135deg, ${flavor.hex_color}30, ${flavor.hex_color}10)` }}
                 >
-                  {flavor.image_emoji}
+                  <img src={flavor.image_url} alt={flavor.flavor_name} className="w-full h-full object-cover" />
                 </div>
                 <div className="p-3 sm:p-4">
                   <h3 className="serif-swirl text-sm sm:text-base mb-0.5">{flavor.flavor_name}</h3>

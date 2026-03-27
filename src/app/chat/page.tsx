@@ -787,7 +787,7 @@ function NewChatModal({ onConfirm, onCancel }: { onConfirm: () => void; onCancel
   return (
     <>
       <div className="overlay" onClick={onCancel} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)", zIndex: 400 }} />
-      <div className="si" style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%,-50%)", zIndex: 410, width: "min(360px, calc(100vw - 32px))", borderRadius: 10, background: "var(--panel)", border: "1px solid var(--line-hi)", padding: "28px" }}>
+      <div className="si" style={{ position: "fixed", top: "30%", left: "35%", transform: "translate(-50%,-50%)", zIndex: 410, width: "min(360px, calc(100vw - 32px))", borderRadius: 10, background: "var(--panel)", border: "1px solid var(--line-hi)", padding: "28px" }}>
         <p className="label" style={{ marginBottom: 12 }}>New Conversation</p>
         <p style={{ fontSize: 14, color: "var(--text-mid)", lineHeight: 1.65, marginBottom: 24 }}>
           Your current chat will be saved automatically. You can resume it any time from the conversation history.
@@ -820,7 +820,7 @@ function cardToFlavor(name: string, allMessages: Message[]): Flavor | null {
       mood_tag: card.vibe || "—",
       sommelier_note: card.tagline || "",
       use_cases: [],
-      dietary: { vegan: false, gluten_free: false, nut_free: false, dairy_free: false, alcohol_free: false, egg_free: false },
+      dietary: { vegan: false, gluten_free: false, nut_free: false, dairy_free: false, alcohol_free: false, egg_free: false, low_sugar: false, soy_free: true, halal: true, kosher: true },
       avoid_with: [],
       serve_temp: card.serveTemp || "—",
       texture: card.texture || "—",

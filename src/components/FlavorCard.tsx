@@ -1,5 +1,6 @@
 
 "use client";
+import { Flavor } from "@/lib/flavors";
 import { useState, useEffect } from "react";
 
 export interface CardData {
@@ -28,6 +29,13 @@ const DIET_LABEL: Record<string, string> = {
   "alcohol-free": "AF",
   alcohol_free: "AF",
   "egg-free": "EF",
+  low_sugar: "LS",
+  "low-sugar": "LS",
+  halal: "HL",
+  "halal-certified": "HL",
+  kosher: "KS",
+  "kosher-certified": "KS",
+
 };
 
 function buildAskPrompt(card: CardData): string {
@@ -44,17 +52,18 @@ function buildAskPrompt(card: CardData): string {
 interface Props {
   card: CardData;
   isSaved?: boolean;
-  onSave?: () => void;
+  //onSave?: (f:Flavor) => void;
   onAsk?: (prompt: string) => void;
   onImageClick?: () => void;
   delay?: number;
 }
 
-export default function FlavorCard({ card, isSaved = false, onSave, onAsk, onImageClick, delay = 0 }: Props) {
+export default function FlavorCard({ card, isSaved = false, onAsk, onImageClick, delay = 0 }: Props) {
   const [imgErr, setImgErr] = useState(false);
   const [justSaved, setJustSaved] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  
   useEffect(() => { setImgErr(false); }, [card.name]);
 
   // Responsive breakpoint detection
@@ -67,11 +76,11 @@ export default function FlavorCard({ card, isSaved = false, onSave, onAsk, onIma
 
   const handleSave = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onSave?.();
-    if (!isSaved) {
-      setJustSaved(true);
-      setTimeout(() => setJustSaved(false), 1500);
-    }
+    // onSave?.();
+    // if (!isSaved) {
+    //   setJustSaved(true);
+    //   setTimeout(() => setJustSaved(false), 1500);
+    // }
   };
 
   const handleAsk = (e: React.MouseEvent) => {
@@ -191,10 +200,10 @@ export default function FlavorCard({ card, isSaved = false, onSave, onAsk, onIma
 
       {/* Buttons */}
       <div style={{ display: "flex", gap: 7, flexWrap: isMobile ? "nowrap" : "wrap" }}>
-        <Btn onClick={onAsk ? handleAsk : undefined} variant="ghost" fullWidth={isMobile}>Ask Scoop</Btn>
-        <Btn onClick={handleSave} variant={justSaved ? "saved" : isSaved ? "outline" : "primary"} fullWidth={isMobile}>
+        <Btn onClick={onAsk ? handleAsk : undefined} variant="primary" fullWidth={isMobile}>Ask Scoop</Btn>
+        {/* <Btn onClick={handleSave} variant={justSaved ? "saved" : isSaved ? "outline" : "primary"} fullWidth={isMobile}>
           {justSaved ? "Saved" : isSaved ? "In Cellar" : "Save"}
-        </Btn>
+        </Btn> */}
       </div>
     </div>
   );
